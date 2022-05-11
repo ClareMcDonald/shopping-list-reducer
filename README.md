@@ -29,9 +29,9 @@ In the shopping list, users can add, edit, and delete items. They can also see t
 - Users are able to edit an existing item
 - Users are able to delete an item
 - Users are able to see a list of shopping items
-- A separate <Header> component is rendered at the top of the page
-  - The <Header> component contains the total count of the items on the shopping list
-  - The <Header> component has a button that clears the shopping list
+- A separate Header component is rendered at the top of the page
+  - The Header component contains the total count of the items on the shopping list
+  - The Header component has a button that clears the shopping list
 - (STRETCH) Users are able to mark a shopping item as done with strikethrough on text
 - (STRETCH) Shopping list state is saved to localStorage and persisted on page refreshes
 
