@@ -1,7 +1,12 @@
-import React from 'react'
+import { useToGets } from '../context/ListProvider';
 
 export default function Header() {
-  return (
-    <div>Header</div>
+    const { togets } = useToGets();
+
+    return (
+        <>
+            <div>Number of Shopping List Items: {togets.length}</div>
+            <button>Clear List</button>
+        </>
   )
 }
