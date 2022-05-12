@@ -42,3 +42,11 @@ export const ToGetProvider = ({ children }) => {
         <ToGetContext.Provider value={{ togets, handleAddToGet, handleUpdateToGet, handleDeleteToGet }}>{children}</ToGetContext.Provider>
     )
 };
+
+export const useToGets = () => {
+    const context = useContext(ToGetContext);
+
+    if (context === undefined) throw new Error('useToGets must be called from within a ToGetProvider');
+
+    return context;
+}
