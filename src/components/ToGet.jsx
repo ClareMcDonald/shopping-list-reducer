@@ -1,7 +1,13 @@
-import React from 'react'
+import { useState } from 'react';
 
-export default function ToGet() {
+export default function ToGet({ toget, onUpdate, onDelete }) {
   return (
-    <div>ToGet</div>
+    <>
+        <input type='checkbox' checked={toget.done} onChange={(e) => {
+              onUpdate({ ...toget, done: e.target.checked });
+          }} />
+          {toget.text}
+        <button type='button' onClick={() => onDelete(toget.id)} >Delete Item</button>
+    </>
   )
 }
