@@ -14,7 +14,7 @@ export default function ToGet({ toget, onUpdate, onDelete }) {
         )
     } else {
         content = (
-            <button aria-label={`edit ${toget.text}`} type='button' onClick={() => setIsEditing(true)} >Edit</button>
+            <button aria-label={`edit button`} type='button' onClick={() => setIsEditing(true)} >Edit</button>
         )
     }
 

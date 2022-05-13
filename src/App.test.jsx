@@ -41,4 +41,20 @@ describe('App', () => {
         
         expect(listItem).not.toBeInTheDocument();
     });
+
+    it('should edit a list item', async () => {
+        const addInput = screen.getByPlaceholderText('New Item');
+        userEvent.type(addInput, 'pickles');
+        const addButton = await screen.findByLabelText('add item');
+        userEvent.click(addButton);
+
+        const editButton = await screen.findByLabelText('edit button');
+        userEvent.click(editButton);
+        const editInput = await screen.findByLabelText('edit input');
+        userEvent.type(editInput, 'pickles!!!!!!');
+        const saveButton = await screen.findByLabelText('save edits');
+
+        const listItem = await screen.findByRole('list-item');
+        expect(listItem).toHaveTextContent('pickles!!!!!!');
+    });
 });
