@@ -17,11 +17,11 @@ export default function ShoppingList() {
             <form onSubmit={handleSubmit} >
                 <label>Add an item:</label>
                 <input placeholder='New Item' type='text' name='newToGet' value={newToGet} onChange={(e) => setNewToGet(e.target.value)} ></input>
-                <button>Add Item</button>
+                <button aria-label='add item'>Add Item</button>
             </form>
             <ul>
                 {togets.map((toget) => (
-                    <li key={toget.id}>
+                    <li key={toget.id} role='list-item'>
                         <ToGet toget={toget} onUpdate={handleUpdateToGet} onDelete={handleDeleteToGet} />
                     </li>
                 ))}
