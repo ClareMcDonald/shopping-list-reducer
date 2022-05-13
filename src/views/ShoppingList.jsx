@@ -6,10 +6,15 @@ export default function ShoppingList() {
     const [newToGet, setNewToGet] = useState('');
     const { togets, handleAddToGet, handleUpdateToGet, handleDeleteToGet } = useToGets();
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        handleAddToGet(newToGet);
+        setNewToGet('');
+    }
     return (
         <>
             <h1>ShoppingList</h1>
-            <form>
+            <form onSubmit={handleSubmit} >
                 <label>Add an item:</label>
                 <input placeholder='New Item' type='text' name='newToGet' value={newToGet} onChange={(e) => setNewToGet(e.target.value)} ></input>
                 <button>Add Item</button>
