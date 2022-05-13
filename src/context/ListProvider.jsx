@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 
-const initialToGets = [{ id: Date.now(), text: 'pickles', done: false }];
+const initialToGets = [];
 
 const toGetReducer = (state, action) => {
     switch (action.type) {
@@ -16,6 +16,8 @@ const toGetReducer = (state, action) => {
             });
         case 'DELETE_TOGET':
             return state.filter((toget) => toget.id !== action.payload.id);
+        case 'DELETE_ALL_TOGETS':
+            return [];
         default:
             throw new Error(`Action type ${action.type} is not supported.`);
     }
@@ -37,9 +39,13 @@ export const ToGetProvider = ({ children }) => {
     const handleDeleteToGet = (id) => {
         dispatch({ type: 'DELETE_TOGET', payload: { id } });
     };
+    
+    const handleDeleteAllToGets = () => {
+        dispatch({ type: 'DELETE_ALL_TOGETS', payload: { initialToGets }})
+    }
 
     return (
-        <ToGetContext.Provider value={{ togets, handleAddToGet, handleUpdateToGet, handleDeleteToGet }}>{children}</ToGetContext.Provider>
+        <ToGetContext.Provider value={{ togets, handleAddToGet, handleUpdateToGet, handleDeleteToGet, handleDeleteAllToGets }}>{children}</ToGetContext.Provider>
     )
 };
 
