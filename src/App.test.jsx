@@ -12,7 +12,7 @@ describe('App', () => {
         );
     });
 
-    it('should add an item on add click', async () => {
+    it('should add an item on add button click', async () => {
         const addInput = screen.getByPlaceholderText('New Item');
         userEvent.type(addInput, 'pickles');
 
@@ -23,5 +23,22 @@ describe('App', () => {
         const listItem = await screen.findByRole('list-item');
 
         expect(listItem).toHaveTextContent('pickles', { exact: false });
+    });
+
+    it('should delete an item on delete button click', async () => {
+        const addInput = screen.getByPlaceholderText('New Item');
+        userEvent.type(addInput, 'pickles');
+
+        const addButton = await screen.findByLabelText('add item');
+
+        userEvent.click(addButton);
+        
+        const listItem = await screen.findByRole('list-item');
+
+        const deleteButton = await screen.findByLabelText(`delete button`);
+
+        userEvent.click(deleteButton);
+        
+        expect(listItem).not.toBeInTheDocument();
     });
 });
