@@ -9,6 +9,11 @@ export default function ShoppingList() {
     return (
         <>
             <h1>ShoppingList</h1>
+            <form>
+                <label>Add an item:</label>
+                <input placeholder='New Item' type='text' name='newToGet' value={newToGet} onChange={(e) => setNewToGet(e.target.value)} ></input>
+                <button>Add Item</button>
+            </form>
             <ul>
                 {togets.map((toget) => (
                     <li key={toget.id}>
