@@ -57,4 +57,19 @@ describe('App', () => {
         const listItem = await screen.findByRole('list-item');
         expect(listItem).toHaveTextContent('pickles!!!!!!');
     });
+
+    it('should display a list of items', async () => {
+        const addInput = screen.getByPlaceholderText('New Item');
+        userEvent.type(addInput, 'pickles');
+        const addButton = await screen.findByLabelText('add item');
+        userEvent.click(addButton);
+
+        userEvent.type(addInput, 'bananas');
+        userEvent.click(addButton);
+
+
+        const listItems = await screen.findAllByRole('list-item');
+
+        expect(listItems.length).toBe(2);
+    });
 });
