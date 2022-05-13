@@ -8,13 +8,13 @@ export default function ToGet({ toget, onUpdate, onDelete }) {
     if (isEditing) {
         content = (
             <form onSubmit={(event) => { event.preventDefault(); setIsEditing(false); }} >
-                <input value={toget.text} onChange={(e) => onUpdate({ ...toget, text: e.target.value })}></input>
-                <button>Save</button>  
+                <input aria-label='edit input' value={toget.text} onChange={(e) => onUpdate({ ...toget, text: e.target.value })}></input>
+                <button aria-label='save edits'>Save</button>  
             </form>
         )
     } else {
         content = (
-            <button type='button' onClick={() => setIsEditing(true)} >Edit</button>
+            <button aria-label={`edit ${toget.text}`} type='button' onClick={() => setIsEditing(true)} >Edit</button>
         )
     }
 
@@ -25,7 +25,7 @@ export default function ToGet({ toget, onUpdate, onDelete }) {
         }} />
         {toget.text}
         {content}
-        <button type='button' onClick={() => onDelete(toget.id)} >Delete Item</button>
+        <button aria-label={`delete ${toget.text}`} type='button' onClick={() => onDelete(toget.id)} >Delete Item</button>
     </>
 )
 }
